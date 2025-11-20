@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Página do Núcleo Incubador de Empreendimentos do Ifes de Alegre."
+    />
+    <meta name="theme-color" content="#068d01" />
+    <meta property="og:title" content="Núcleo Incubador Ifes de Alegre" />
+    <meta
+      property="og:description"
+      content="Ambiente de inovação do Ifes – Campus de Alegre."
+    />
+    <meta property="og:type" content="website" />
+    <title>Núcleo Incubador Ifes de Alegre</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <style>
+      .form-contato{
+        max-width: 600px;
+        background-color: #fff;
+        margin: 2rem auto;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        
+      }
+
+      .form-grupo{
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form-contato label{
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+      }
+
+      .form-contato input, 
+      .form-contato select,
+      .form-contato textarea{
+        font: inherit;
+        padding: 0.6rem;
+        border-radius: 3px;
+        border: 1px solid #698476;
+      }
+
+      .form-contato input, 
+      .form-contato select{
+        height: 3rem;
+      }
+
+      .botao-cta{
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      
+    </style>
+  </head>
+
+  <body>
+    <a class="skip-link oculto" href="#inicio">Ir direto para o conteúdo</a>
+
+    <header class="cabecalho-principal">
+      <h1 class="logo-texto">
+        <a href="#inicio" class="logo-link">Núcleo Incubador</a>
+      </h1>
+
+      <nav class="navegacao-principal" aria-label="Navegação principal">
+        <ul class="menu" role="list">
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#programas">Programas</a></li>
+          <li><a href="#startups">Startups</a></li>
+          <li><a href="#eventos">Eventos</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="inicio" class="conteudo-principal">
+
+      <form class="form-contato">
+        <div class="form-grupo">
+          <label for="nome">Nome Completo</label>
+          <input type="text" name="nome" id="nome" required aria-required="true" minlength="3" placeholder="Digete o seu nome">
+        </div>
+
+        <div class="form-grupo">
+          <label for="email">E-mail</label>
+          <input type="email" name="email" id="email" placeholder="seuemail@exemplo.com" aria-required="true" required>
+        </div>
+
+        <div class="form-grupo">
+          <label for="assunto">Assunto</label>
+          <select name="assunto" id="assunto" required aria-required="true">
+            <option value="" disabled selected>Selecione um tópico</option>
+            <option value="editais">Informações sobre editais</option>
+            <option value="mentorias">Mentorias e projetos</option>
+            <option value="outro">Outros assuntos</option>
+          </select>
+        </div>
+
+        <div class="form-grupo">
+          <label for="mensagem">Sua Mensagem</label>
+          <textarea name="mensagem" id="mesagem" rows="8" required aria-required="true" placeholder="Digite a sua mensagem aqui..."></textarea>
+        </div>
+
+        <div class="form-grupo">
+          <button type="submit" class="botao-cta">Enviar Mensagem</button>
+        </div>
+      </form>
+     
+    </main>
+
+    <footer class="rodape-principal">
+      <small>© 2025 Instituto Federal do Espírito Santo - Campus de Alegre</small>
+    </footer>
+  </body>
+</html>

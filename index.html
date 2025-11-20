@@ -1,65 +1,502 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
+<!-- Declara o documento como HTML5 para o navegador -->
+
+<html lang="pt-BR">
+  <!-- Define o idioma da página como Português do Brasil para acessibilidade e SEO -->
+  <head>
+    <!-- Início do cabeçalho do documento: contém metadados e links -->
     <meta charset="UTF-8" />
+    <!-- Define a codificação de caracteres como UTF-8 (suporta acentos) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Ajusta a escala em dispositivos móveis (layout responsivo) -->
+    <meta
+      name="description"
+      content="Página do Núcleo Incubador de Empreendimentos do Ifes de Alegre."
+    />
+    <!-- Descrição da página para buscadores -->
+
+    <meta name="theme-color" content="#068d01" />
+    <!-- Cor do tema no navegador mobile (barra superior) -->
+    <meta property="og:title" content="Núcleo Incubador Ifes de Alegre" />
+    <!-- Título para compartilhamento (Open Graph) -->
+    <meta
+      property="og:description"
+      content="Ambiente de inovação do Ifes – Campus de Alegre."
+    />
+    <!-- Descrição para compartilhamento (Open Graph) -->
+    <meta property="og:type" content="website" />
+    <!-- Tipo de conteúdo (site) para Open Graph -->
+
+    <title>Núcleo Incubador Ifes de Alegre</title>
+    <!-- Título exibido na aba do navegador -->
+
     <link rel="stylesheet" href="css/style.css" />
-    <title>Núcleo Incubador do Ifes de Alegre</title>
-    <link rel="icon" href="image/ico/ico.png" type="image/png" />
+    <!-- Importa o arquivo de estilos principal -->
+    <link rel="icon" href="/favicon.ico" />
+    <!-- Ícone (favicon) exibido na aba do navegador -->
+  </head>
+  <!-- Fim da seção de cabeçalho -->
 
-</head>
-<body>
-    
-    <header id="cabecalho-principal">
-        <!-- Título principal -->
-        <h1>Incubadora do Ifes de Alegre</h1>
-        <!-- <p>Ambiente de inovação para transformar ideias em negógios de 
-            impacto no Espírito Santo.</p>  -->
-        <nav>
-            <ul>
-                <li><a href="#">Início</a></li>
-                <li><a href="#">Programas</a></li>
-                <li><a href="#">Startups</a></li>
-                <li><a href="#">Eventos</a></li>
-                <li><a href="#">Sobre</a></li>
-                <li><a href="#">Contatos</a></li>
-            </ul>
-        </nav>
+  <script>
+  (function() {
+      const header = document.querySelector('.cabecalho-principal');
+      const btn = header.querySelector('.menu-toggle');
+      const menu = document.getElementById('menu');
+
+      btn.addEventListener('click', () => {
+        const aberto = header.classList.toggle('nav-aberta');
+        btn.setAttribute('aria-expanded', aberto);  // acessibilidade
+        // Opcional: mover foco para o primeiro link quando abrir
+        if (aberto) menu.querySelector('a')?.focus();
+      });
+    })();
+  </script>
+
+
+  <body>
+    <!-- Início do corpo do documento (conteúdo visível) -->
+
+    <a class="skip-link oculto" href="#inicio">Ir direto para o conteúdo</a>
+    <!-- Link de acessibilidade para pular o menu e ir ao conteúdo principal -->
+
+    <header class="cabecalho-principal">
+      <!-- Cabeçalho fixo no topo com logo e navegação -->
+      <h1 class="logo-texto">
+        <!-- Título principal da página (logo em texto para SEO) -->
+        <a href="#inicio" class="logo-link"
+          >Núcleo Incubador de Empreendimentos</a
+        >
+        <!-- Link do logo que leva ao topo/início -->
+      </h1>
+      <!-- Fim do título/logo -->
+
+      <nav class="navegacao-principal" aria-label="Navegação principal">
+        <!-- Navegação principal com rótulo para leitores de tela -->
+        <ul class="menu" role="list">
+          <!-- Lista de itens do menu; role explicita lista para tecnologias assistivas -->
+          <li><a href="#inicio">Início</a></li>
+          <!-- Link para a seção de início; aria-current indica página/âncora atual -->
+          <li><a href="#programas">Programas</a></li>
+          <!-- Link para a seção Programas -->
+          <li><a href="#startups">Startups</a></li>
+          <!-- Link para a seção Startups -->
+          <li><a href="#eventos">Eventos</a></li>
+          <!-- Link para a seção Eventos & Agenda -->
+          <li><a href="#sobre">Sobre</a></li>
+          <!-- Link para a seção Sobre -->
+          <li><a href="#contato">Contato</a></li>
+          <!-- Link para a seção Contato -->
+        </ul>
+        <!-- Fim da lista de menu -->
+      </nav>
+      <!-- Fim da navegação -->
     </header>
+    <!-- Fim do cabeçalho -->
 
-    <main id="main-content">
-        <section id="inicio">
-            <h2>Início</h2>
-            <p>Ambiente de inovação para transformar ideias em negócios de impacto no Espírito Santo.</p>
-            <figure>
-                <img class="logo" id="logo"  src="image/incubadora.jpeg" alt="Espaço colaborativo do Núcleo incubador do Ifes de Alegre">
-                <figcaption>Ambiente utilizado para ideação, mentorias e testes de protótipos.</figcaption>
-            </figure>
-        </section>
+    <main id="inicio" class="conteudo-principal">
+      <!-- Conteúdo principal do site; id serve para âncoras e skip-link -->
 
-        <section id="programas">
-            <h2>Programas</h2>
-            <article>
-                <h3>Pré-incubação</h3>
-                <p>Transformação de ideias em protótipos iniciais e MVP, com foco em validar problema e solução.</p>
-            </article>
-        </section>
+      <section class="hero" aria-labelledby="titulo-hero">
+        <!-- Seção de destaque (hero) com rótulo de acessibilidade -->
+        <div class="hero-container">
+          <!-- Contêiner para organizar texto e imagem de forma responsiva -->
+          <div class="hero-texto">
+            <!-- Bloco contendo os textos da área hero -->
+            <h2 id="titulo-hero">
+              <!-- Título da área hero; id referenciado por aria-labelledby -->
+              Ambiente de inovação para transformar ideias em negócios de
+              impacto
+              <!-- Mensagem principal -->
+            </h2>
+            <!-- Fim do título da hero -->
+            <p>
+              <!-- Parágrafo de apoio -->
+              Aceleramos a jornada de novas empresas, desde a concepção até a
+              consolidação no mercado.
+              <!-- Texto explicativo curto -->
+            </p>
+            <!-- Fim do parágrafo -->
+            <a href="#programas" class="botao-cta">Conheça nossos programas</a>
+            <!-- Botão/Link de chamada para ação que rola até Programas -->
+          </div>
+          <!-- Fim do bloco de texto da hero -->
 
-        <section id="contato">
-            <h2>Contato</h2>
-            <address>
-                E-mail: <a href="mailto:incubadora.alegre@ifes.edu.br">incubadora.alegre@ifes.edu.br</a><br>
-                Endereço: Ifes — Campus de Alegre, Alegre–ES
-            </address>
-        </section>
-    </main>
+          <figure class="hero-imagem">
+            <!-- Figura semântica para imagem com legenda -->
+            <img
+              src="image/incubadora.jpeg"
+              alt="Logotipo da Incubadora do Ifes de Alegre"
+              class="hero-logo"
+            />
+            <!-- Imagem principal (sem lazy para não atrasar) -->
+            <figcaption class="oculto">
+              Imagem institucional da incubadora
+            </figcaption>
+            <!-- Legenda oculta para leitores de tela -->
+          </figure>
+          <!-- Fim da figura -->
+        </div>
+        <!-- Fim do contêiner da hero -->
+      </section>
+      <!-- Fim da seção hero -->
 
-    <footer id="footer-content">
+      <section
+        id="sobre"
+        class="secao-sobre sobre--empresarial"
+        aria-labelledby="titulo-sobre"
+      >
+        <!-- Seção Sobre com layout mais “executivo” -->
+        <header class="sobre-cabecalho">
+          <!-- Cabeçalho interno da seção Sobre -->
+          <span class="sobre-selo" aria-hidden="true">Institucional</span>
+          <!-- Selo visual; aria-hidden evita leitura redundante -->
+          <h3 id="titulo-sobre">Sobre o Núcleo Incubador</h3>
+          <!-- Título da seção Sobre -->
+        </header>
+        <!-- Fim do cabeçalho da seção Sobre -->
+
+        <div class="sobre-grid">
+          <!-- Grade para organizar texto e cartão lateral -->
+          <div class="sobre-col">
+            <!-- Coluna principal do texto -->
+            <p class="sobre-lead">
+              <!-- Parágrafo inicial em destaque -->
+              Ambiente de inovação do Ifes – Campus de Alegre que apoia
+              empreendedores na jornada de <strong>pré-incubação</strong>,
+              <strong>incubação</strong> e <strong>pós-incubação</strong>.
+              <!-- Destaque nas fases -->
+            </p>
+            <!-- Fim do parágrafo lead -->
+
+            <p class="sobre-texto">
+              <!-- Parágrafo explicando serviços -->
+              Conectamos equipes a <strong>mentorias especializadas</strong>,
+              <strong>infraestrutura</strong> e uma
+              <strong>rede de parceiros</strong> para acelerar soluções com
+              impacto regional.
+              <!-- Benefícios -->
+            </p>
+            <!-- Fim do parágrafo -->
+
+            <p class="sobre-texto">
+              <!-- Parágrafo sobre abordagem -->
+              Nosso trabalho prioriza validação de problema, construção de MVP e
+              orientação para tração e sustentabilidade do negócio, sempre
+              alinhados às boas práticas de governança e conformidade.
+              <!-- Abordagem -->
+            </p>
+            <!-- Fim do parágrafo -->
+
+            <ul class="sobre-pilares" aria-label="Pilares de atuação">
+              <!-- Lista de pilares; aria-label descreve finalidade -->
+              <li>Mentorias técnicas e de gestão</li>
+              <!-- Ponto 1 -->
+              <li>Ambiente e laboratórios do campus</li>
+              <!-- Ponto 2 -->
+              <li>Rede de parceiros e conexões com o mercado</li>
+              <!-- Ponto 3 -->
+              <li>Orientação para captação e sustentabilidade</li>
+              <!-- Ponto 4 -->
+            </ul>
+            <!-- Fim da lista de pilares -->
+          </div>
+          <!-- Fim da coluna de texto -->
+
+          <aside class="sobre-card" aria-labelledby="sobre-oferta-titulo">
+            <!-- Cartão lateral resumindo “como atuamos” -->
+            <h4 id="sobre-oferta-titulo" class="sobre-card__titulo">
+              Como atuamos
+            </h4>
+            <!-- Título do cartão lateral -->
+            <dl class="sobre-oferta">
+              <!-- Lista de definições (termo + descrição) -->
+              <dt>Pré-incubação</dt>
+              <!-- Termo: fase -->
+              <dd>
+                Descoberta do problema, entrevistas com usuários e protótipos de
+                baixa fidelidade.
+              </dd>
+              <!-- Definição: descrição da fase -->
+
+              <dt>Incubação</dt>
+              <!-- Termo: fase -->
+              <dd>
+                Desenvolvimento do MVP, métricas de produto, suporte de
+                especialistas e orientação de mercado.
+              </dd>
+              <!-- Definição: descrição da fase -->
+
+              <dt>Pós-incubação</dt>
+              <!-- Termo: fase -->
+              <dd>
+                Consolidação, indicadores e conexões estratégicas para escala e
+                parcerias.
+              </dd>
+              <!-- Definição: descrição da fase -->
+            </dl>
+            <!-- Fim da lista de definições -->
+            <p class="sobre-cta">
+              <!-- Parágrafo para ação -->
+              <a class="botao-cta" href="#contato">Fale com a nossa equipe</a>
+              <!-- Botão para contato -->
+            </p>
+            <!-- Fim do parágrafo CTA -->
+          </aside>
+          <!-- Fim do cartão lateral -->
+        </div>
+        <!-- Fim da grade Sobre -->
+      </section>
+      <!-- Fim da seção Sobre -->
+
+      <section
+        id="programas"
+        class="secao-programas"
+        aria-labelledby="titulo-programas"
+      >
+        <!-- Seção Programas (trilhas) -->
+        <h3 id="titulo-programas">Nossas Trilhas de Desenvolvimento</h3>
+        <!-- Título da seção Programas -->
+
+        <div class="programas-container">
+          <!-- Container de cards com grid fluido -->
+          <article class="card-programa">
+            <!-- Card de programa: Pré-incubação -->
+            <h4>Pré-Incubação</h4>
+            <!-- Título do card -->
+            <p>
+              Transformação de ideias em planos: validação do problema,
+              entrevistas e protótipos de baixa fidelidade.
+            </p>
+            <!-- Descrição do card -->
+          </article>
+          <!-- Fim do card -->
+
+          <article class="card-programa destaque">
+            <!-- Card de programa: Incubação (com destaque visual) -->
+            <h4>Incubação</h4>
+            <!-- Título do card -->
+            <p>
+              Desenvolvimento com acesso à infraestrutura e assessorias.
+              Construção do MVP, métricas e tração.
+            </p>
+            <!-- Descrição do card -->
+          </article>
+          <!-- Fim do card -->
+
+          <article class="card-programa">
+            <!-- Card de programa: Pós-incubação -->
+            <h4>Pós-Incubação</h4>
+            <!-- Título do card -->
+            <p>
+              Suporte à empresa graduada: consolidação no mercado, indicadores e
+              conexões estratégicas.
+            </p>
+            <!-- Descrição do card -->
+          </article>
+          <!-- Fim do card -->
+        </div>
+        <!-- Fim do container de programas -->
+      </section>
+      <!-- Fim da seção Programas -->
+
+      <section
+        id="startups"
+        class="secao-startups"
+        aria-labelledby="titulo-startups"
+      >
+        <!-- Seção Startups incubadas -->
+        <header class="conteudo-header">
+          <!-- Cabeçalho da seção Startups -->
+          <h3 id="titulo-startups">Startups</h3>
+          <!-- Título da seção Startups -->
+          <p class="conteudo-lead">
+            Startups incubadas oficialmente pelo Núcleo Incubador.
+          </p>
+          <!-- Texto de apoio -->
+        </header>
+        <!-- Fim do cabeçalho -->
+
+        <div class="startups-grid">
+          <!-- Grade de startups -->
+          <article class="startup-item destaque">
+            <!-- Item de startup com destaque -->
+            <div class="startup-avatar" aria-hidden="true">MV</div>
+            <!-- Avatar com iniciais (decorativo) -->
+            <div class="startup-body">
+              <!-- Corpo com nome e pitch -->
+              <h4 class="startup-nome">MV Gestão Integrada</h4>
+              <!-- Nome da startup -->
+              <p class="startup-pitch">
+                Startup incubada no Ifes – Campus de Alegre.
+              </p>
+              <!-- Descrição curta -->
+            </div>
+            <!-- Fim do corpo -->
+          </article>
+          <!-- Fim do item startup -->
+
+          <article class="startup-item">
+            <!-- Item de startup -->
+            <div class="startup-avatar" aria-hidden="true">BK</div>
+            <!-- Avatar com iniciais -->
+            <div class="startup-body">
+              <!-- Corpo do item -->
+              <h4 class="startup-nome">B.KEMI — Tecnologia Sustentável</h4>
+              <!-- Nome da startup -->
+              <p class="startup-pitch">
+                Startup incubada no Ifes – Campus de Alegre.
+              </p>
+              <!-- Descrição curta -->
+            </div>
+            <!-- Fim do corpo -->
+          </article>
+          <!-- Fim do item startup -->
+
+          <article class="startup-item">
+            <!-- Item de startup -->
+            <div class="startup-avatar" aria-hidden="true">CF</div>
+            <!-- Avatar com iniciais -->
+            <div class="startup-body">
+              <!-- Corpo do item -->
+              <h4 class="startup-nome">Conecta Florestas</h4>
+              <!-- Nome da startup -->
+              <p class="startup-pitch">
+                Startup incubada no Ifes – Campus de Alegre.
+              </p>
+              <!-- Descrição curta -->
+            </div>
+            <!-- Fim do corpo -->
+          </article>
+          <!-- Fim do item startup -->
+        </div>
+        <!-- Fim da grade de startups -->
+      </section>
+      <!-- Fim da seção Startups -->
+
+      <section
+        id="eventos"
+        class="secao-eventos"
+        aria-labelledby="titulo-eventos"
+      >
+        <!-- Seção de Eventos & Agenda -->
+        <header class="conteudo-header">
+          <!-- Cabeçalho da seção Eventos -->
+          <h3 id="titulo-eventos">Eventos &amp; Agenda</h3>
+          <!-- Título da seção Eventos -->
+          <p class="conteudo-lead">
+            Agenda institucional — publicados apenas eventos oficiais da
+            incubadora.
+          </p>
+          <!-- Texto de apoio -->
+        </header>
+        <!-- Fim do cabeçalho -->
+
+        <ol class="timeline" aria-label="Linha do tempo de eventos">
+          <!-- Lista ordenada representando a linha do tempo -->
+          <li class="timeline-item">
+            <!-- Item de evento real -->
+            <div class="timeline-badge">
+              <!-- Badge que exibe o dia/mês -->
+              <time datetime="2025-10-30">30<br /><span>Out</span></time>
+              <!-- Data do evento (semana/dia visuais) -->
+            </div>
+            <!-- Fim do badge -->
+            <div class="timeline-card">
+              <!-- Card do evento -->
+              <h4>Nome do Evento</h4>
+              <!-- Título do evento -->
+              <p>Descrição do evento que ocorrerá nesta data.</p>
+              <!-- Descrição do evento -->
+            </div>
+            <!-- Fim do card -->
+          </li>
+          <!-- Fim do item de evento -->
+
+          <li class="timeline-item">
+            <!-- Item placeholder "Em atualização" -->
+            <div class="timeline-badge">
+              <!-- Badge sem data real -->
+              <time aria-hidden="true">27<br /><span>Nov</span></time>
+              <!-- Hífens visuais; aria-hidden para não confundir leitores de tela -->
+            </div>
+            <!-- Fim do badge -->
+            <div class="timeline-card" aria-live="polite">
+              <!-- Card com aria-live para atualização futura -->
+              <h4>Em atualização</h4>
+              <!-- Título do placeholder -->
+              <p>Em breve divulgaremos os próximos eventos oficiais.</p>
+              <!-- Texto do placeholder -->
+            </div>
+            <!-- Fim do card -->
+          </li>
+          <!-- Fim do item placeholder -->
+
+          <li class="timeline-item">
+            <!-- Item placeholder "Em atualização" -->
+            <div class="timeline-badge">
+              <!-- Badge sem data real -->
+              <time aria-hidden="true">02<br /><span>Dez</span></time>
+              <!-- Hífens visuais; aria-hidden para não confundir leitores de tela -->
+            </div>
+            <!-- Fim do badge -->
+            <div class="timeline-card" aria-live="polite">
+              <!-- Card com aria-live para atualização futura -->
+              <h4>Em atualização</h4>
+              <!-- Título do placeholder -->
+              <p>Em breve divulgaremos os próximos eventos oficiais.</p>
+              <!-- Texto do placeholder -->
+            </div>
+            <!-- Fim do card -->
+          </li>
+          <!-- Fim do item placeholder -->
+        </ol>
+        <!-- Fim da timeline -->
+      </section>
+      <!-- Fim da seção Eventos -->
+
+      <section
+        id="contato"
+        class="secao-contato"
+        aria-labelledby="titulo-contato"
+      >
+        <!-- Seção de contato -->
+        <span class="selo-contato">Fale Conosco</span>
+        <!-- Selo visual centralizado acima da seção -->
+        <h3 id="titulo-contato">Pronto para começar sua jornada?</h3>
+        <!-- Título da seção de contato -->
         <p>
-            &copy; <span id="year"></span> Núcleo Incubador do Ifes de <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-                Alegre - Todos Direitos Reservados
+          Entre em contato com nossa equipe para mais informações sobre editais
+          e programas.
         </p>
+        <!-- Texto de apoio -->
+
+        <address class="bloco-contato">
+          <!-- Bloco semântico com dados de contato -->
+          <p><strong>Coordenador Adjunto:</strong> Cleziel Franzoni da Costa</p>
+          <!-- Nome do responsável -->
+        </address>
+        <!-- Fim do address -->
+
+        <p>
+          <a href="mailto:incubadora.ale@ifes.edu.br" class="botao-cta"
+            >Enviar E-mail para Incubadora</a
+          >
+        </p>
+        <!-- Botão de e-mail (mailto abre cliente de e-mail) -->
+      </section>
+      <!-- Fim da seção Contato -->
+    </main>
+    <!-- Fim do conteúdo principal -->
+
+    <footer class="rodape-principal">
+      <!-- Rodapé do site -->
+      <small
+        >© 2025 Instituto Federal do Espírito Santo - Campus de Alegre</small
+      >
+      <!-- Texto legal curto -->
     </footer>
-    
-</body>
+    <!-- Fim do rodapé -->
+  </body>
+  <!-- Fim do corpo do documento -->
 </html>
+<!-- Fim do documento HTML -->

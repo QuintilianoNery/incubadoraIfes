@@ -1,86 +1,799 @@
-/*reset de estilos*/
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ================= BLOCO 1: BASE / RESET ================ */
+/* Aplica box-sizing: border-box em todos os elementos (mais fácil de controlar larguras/alturas) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
+/* Ativa rolagem suave ao navegar por âncoras (#link) */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Estilos base do corpo: remove margens, define fonte e cores padrão */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.6;
-    color: #333; 
-    background-color: #f0f0f0;
+  margin: 0; /* Remove margem padrão do navegador */
+  padding: 0; /* Remove padding padrão do navegador */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Fonte legível e comum */
+  color: #212529; /* Cor base do texto (cinza bem escuro) */
+  background-color: #ffffff; /* Fundo branco */
+  line-height: 1.6; /* Altura de linha confortável para leitura */
 }
 
-/*Cabeçalgo e navegação*/
-#cabecalho-principal {
-    background-color: #3315a1;
-    color: rgb(208, 231, 238);
-    padding: 20px 0;
-    text-align: center;
+/* ============== Variáveis (tema de cores/medidas) ============== */
+/* :root é um espaço global para variáveis CSS (custom properties) */
+:root {
+  /* Paleta de cores principal do site */
+  --primary: #068d01; /* Cor de destaque (botões, links ativos) */
+  --primary-600: #057c01; /* Variação mais escura para hover/efeitos */
+  --dark: #212529; /* Texto escuro e fundos escuros */
+  --light: #ffffff; /* Texto claro/fundos claros */
+  --muted: #f8f9fa; /* Cinza muito claro (fundos de cards/seções) */
+  --border: #dddddd; /* Cor de bordas padrão */
+  --muted-2: #e9f2ff; /* Azul clarinho para detalhes (avatars, badges) */
+
+  /* Escala de espaçamentos reutilizáveis */
+  --space-1: 8px; /* Espaço pequeno */
+  --space-2: 12px; /* Espaço médio-pequeno */
+  --space-3: 16px; /* Espaço base */
+  --space-4: 24px; /* Espaço médio */
+  --space-5: 32px; /* Espaço médio-grande */
+  --space-6: 48px; /* Espaço grande */
+
+  /* Dimensões auxiliares */
+  --altura-cabecalho: 90px; /* Altura do header fixo (usada em cálculos) */
+  --max-width: 1200px; /* Largura máxima do conteúdo central */
+
+  /* Raios de borda e sombras padrão (para cards e botões) */
+  --radius: 8px; /* Raio padrão */
+  --radius-lg: 12px; /* Raio maior */
+  --shadow-s: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra leve */
+  --shadow-m: 0 6px 18px rgba(0, 0, 0, 0.1); /* Sombra média */
+
+  /* Tamanhos de fonte utilitários */
+  --fs-1: 0.95rem; /* Texto pequeno */
+  --fs-2: 1rem; /* Texto padrão */
+  --fs-3: 1.15rem; /* Subtítulos */
+  --fs-4: 1.6rem; /* Títulos de seção */
+  --fs-hero: 2rem; /* Título principal (hero) */
 }
 
-#cabecalho-principal h1{
-    margin-bottom: 15px;
-    color: f4f4f4;
-
+/* ================== BLOCO 2: CABEÇALHO ================== */
+/* Header fixo no topo da página */
+.cabecalho-principal {
+  position: fixed; /* Fixa o elemento no topo mesmo ao rolar a página */
+  inset: 0 0 auto 0; /* Atalho para top:0; right:0; bottom:auto; left:0; */
+  height: var(--altura-cabecalho); /* Usa variável global de altura */
+  background-color: var(--light); /* Fundo branco */
+  border-bottom: 1px solid var(--border); /* Linha sutil separando do conteúdo */
+  display: flex; /* Flexbox para alinhar logo e menu */
+  justify-content: space-between; /* Espaça logo à esquerda e menu à direita */
+  align-items: center; /* Centraliza verticalmente os itens */
+  padding: 0 var(--space-3); /* Respiro lateral interno */
+  z-index: 1000; /* Garante que o header fique acima dos demais elementos */
 }
 
-#cabecalho-principal nav ul {
-    display: flex;
-    list-style: none;
-    gap: 8px;
-    padding: 10px;
-    justify-content: center;
-    margin-top: 20px;
+/* Estilo do texto do logo (h1) */
+.logo-texto {
+  font-size: 1.2rem; /* Tamanho de fonte do logo */
+  margin: 0; /* Remove margem padrão do h1 */
+  font-weight: 700; /* Deixa o texto mais destacado (negrito) */
 }
 
-#cabecalho-principal nav a {
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-    padding: 10px 20px;
-    font-weight: 600;
-    border-radius: 5px;
-
+/* Link do logo */
+.logo-link {
+  text-decoration: none; /* Remove sublinhado padrão */
+  color: var(--dark); /* Usa cor escura padrão */
 }
 
-/*Efeito ao passar o mouse nos botôes, ao passar o mouse 
-cor do fundo e do texto*/
-#cabecalho-principal nav a:hover {
-    transition: background-color 0.3s ease;
-    background-color: #f4f4f4;
-    color: #3315a1;
+/* Lista de navegação (menu) */
+.navegacao-principal .menu {
+  list-style: none; /* Remove marcadores da lista */
+  display: flex; /* Exibe itens lado a lado */
+  gap: var(--space-3); /* Espaçamento entre os itens do menu */
+  margin: 0; /* Remove margem padrão */
+  padding: 0; /* Remove padding padrão */
 }
 
-/*main*/
-#main-content {
-    max-width: 900px;
-    background-color: #ffffff;
-    margin: 20px auto;
-    border-radius: 5px;
-    padding: 20px;
-
+/* Links do menu */
+.navegacao-principal a {
+  color: var(--dark); /* Cor do link */
+  text-decoration: none; /* Sem sublinhado */
+  font-weight: 500; /* Peso médio para legibilidade */
+  padding: var(--space-1); /* Aumenta área clicável */
+  border-radius: 6px; /* Bordas levemente arredondadas */
 }
 
-#main-content h2,
-#main-content h3 {
-    color: #333;
-    margin-bottom: 15px;
+/* Estado hover e foco visível para links do menu */
+.navegacao-principal a:hover,
+.navegacao-principal a:focus-visible {
+  color: var(--primary); /* Muda a cor ao passar o mouse/ter foco */
+  text-decoration: underline; /* Sublinha para indicar interatividade */
 }
 
-/* Se for id, usa-se #, se for classe usa-se . */
-main img.logo {
-    width: 400px;
-    margin: 20px auto;
-    display: block;
+/* Indica visualmente a âncora/página atual com aria-current */
+.navegacao-principal a[aria-current="page"] {
+  color: var(--primary); /* Cor de destaque */
+  text-decoration: underline; /* Sublinhado para reforço */
+  font-weight: 700; /* Negrito para destaque extra */
 }
 
-/*Rodapé, remover js do HTML ao aprender JS*/
-#footer-content {
-    text-align: center;
-    padding: 15px 0;
-    background-color: #696969;
-    color: #f4f4f4;
-    margin-top: 20px;
-    font-size: 14px;
+/* Adiciona espaço no topo do main para não ficar atrás do header fixo */
+.conteudo-principal {
+  padding-top: var(--altura-cabecalho);
 }
+
+/* Garante que ao rolar para uma âncora, a seção não fique escondida atrás do header */
+section {
+  scroll-margin-top: var(--altura-cabecalho);
+}
+
+/* =================== BLOCO 3: HERO =================== */
+/* Seção de destaque (hero) com grande altura e fundo suave */
+.hero {
+  background-color: var(
+    --muted
+  ); /* Fundo cinza claro para diferenciar do branco */
+  display: flex; /* Para centralizar verticalmente o container interno */
+  align-items: center; /* Centralização vertical */
+  padding: var(--space-6) var(--space-3); /* Espaçamento interno (vertical/horizontal) */
+
+  /* CALC EXPLICADO:
+     min-height: calc(90vh - var(--altura-cabecalho));
+     - 90vh = 90% da altura visível da janela (viewport height).
+     - var(--altura-cabecalho) = altura fixa do header (ex.: 90px).
+     - Subtraímos a altura do header para a seção “hero” ocupar ~90% da tela útil,
+       sem ficar escondida sob o cabeçalho fixo.
+     OBS: O calc() permite misturar unidades (vh e px). O navegador resolve tudo em px.
+  */
+  min-height: calc(90vh - var(--altura-cabecalho));
+}
+
+/* Container interno da hero que organiza texto e imagem */
+.hero-container {
+  display: flex; /* Flexbox para layout */
+  flex-direction: column; /* Mobile-first: empilha os itens verticalmente */
+  gap: var(--space-4); /* Espaço entre texto e imagem */
+  max-width: var(--max-width); /* Largura máxima centralizada */
+  width: 100%; /* Ocupa toda a largura disponível */
+  margin: 0 auto; /* Centraliza horizontalmente */
+}
+
+/* Bloco de texto da hero (mobile: vem depois da imagem) */
+.hero-texto {
+  text-align: center;
+  order: 2;
+}
+
+/* Título grande da hero */
+.hero-texto h2 {
+  color: var(--primary); /* Destaque na cor principal */
+  font-size: var(--fs-hero); /* Tamanho grande do título */
+  margin: 0 0 var(--space-1) 0; /* Margem inferior pequena */
+  line-height: 1.2; /* Altura de linha compacta para títulos */
+}
+
+/* Parágrafo da hero */
+.hero-texto p {
+  margin: 0;
+} /* Remove margem padrão para controle fino */
+
+/* Botão de chamada para ação (CTA) reutilizável */
+.botao-cta {
+  display: inline-block; /* Permite padding e dimensões */
+  background-color: var(--primary); /* Cor de fundo do botão */
+  color: var(--light); /* Cor do texto (branco) */
+  padding: 12px 24px; /* Tamanho do botão */
+  text-decoration: none; /* Remove sublinhado do link */
+  border-radius: var(--radius); /* Bordas arredondadas */
+  font-weight: 700; /* Texto mais forte */
+  margin-top: var(--space-3); /* Espaço acima do botão */
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s; /* Animações suaves */
+}
+
+/* Efeito hover do CTA */
+.botao-cta:hover {
+  transform: translateY(-2px); /* Leve deslocamento para cima */
+  box-shadow: var(--shadow-s); /* Sombra leve ao passar o mouse */
+  background: var(--primary-600); /* Tom mais escuro no hover */
+}
+
+/* Bloco da imagem da hero (mobile: vem antes do texto) */
+.hero-imagem {
+  order: 1;
+  text-align: center;
+}
+
+/* Estilo da imagem da hero com proporção fixa para evitar “pulo” (CLS) */
+.hero-logo {
+  max-width: 100%; /* Não ultrapassa a largura do contêiner */
+  height: auto; /* Mantém proporção natural */
+  aspect-ratio: 16/9; /* Reserva espaço proporcional antes de carregar a imagem */
+  object-fit: cover; /* Preenche mantendo a proporção, cortando o excesso */
+  border-radius: var(--radius); /* Bordas arredondadas */
+}
+
+/* Utilitário: deixa conteúdo visível apenas para leitores de tela */
+.oculto {
+  position: absolute; /* Remove do fluxo visual */
+  width: 1px;
+  height: 1px; /* Tamanho mínimo */
+  padding: 0;
+  margin: -1px; /* Evita deslocamento do layout */
+  overflow: hidden; /* Esconde conteúdo excedente */
+  clip: rect(0, 0, 0, 0); /* Recorta para ficar invisível */
+  white-space: nowrap; /* Evita quebra de linha */
+  border: 0; /* Remove borda */
+}
+
+/* Skip-link aparece quando recebe foco (navegação via teclado) */
+.skip-link.oculto:focus {
+  position: fixed; /* Fixa no topo da tela */
+  width: auto;
+  height: auto; /* Volta ao tamanho natural */
+  margin: 0;
+  padding: var(--space-2) var(--space-3); /* Adiciona respiro interno */
+  clip: auto;
+  white-space: normal;
+  border: 0; /* Cancela truques de ocultação */
+  top: var(--space-2);
+  left: var(--space-2); /* Posiciona no canto superior esquerdo */
+  z-index: 1001; /* Fica acima do header */
+  background: #fff; /* Fundo branco para contraste */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+}
+
+/* =================== BLOCO 4: SOBRE =================== */
+/* Espaçamento e largura da seção Sobre */
+.secao-sobre {
+  padding: var(--space-6) var(--space-3); /* Espaço interno */
+  max-width: 900px; /* Largura máxima mais estreita (texto mais legível) */
+  margin: 0 auto; /* Centraliza a seção */
+}
+
+/* Título da seção Sobre */
+.secao-sobre h3 {
+  margin: 6px 0 var(--space-1) 0; /* Controla as margens do título */
+  font-size: var(--fs-4); /* Tamanho do título de seção */
+  color: var(--dark); /* Cor do texto */
+}
+
+/* Parágrafos padrão da seção Sobre */
+.sobre-texto {
+  margin: 0 0 var(--space-3) 0; /* Espaço inferior entre parágrafos */
+  font-size: var(--fs-2); /* Tamanho do texto padrão */
+}
+
+/* Links dentro do texto Sobre */
+.sobre-texto a {
+  color: var(--primary); /* Cor do link */
+  text-decoration: underline; /* Sublinhado para destacar link */
+}
+
+/* Versão “empresarial” da seção (usa largura total do container principal) */
+.sobre--empresarial {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* Parágrafo de destaque (lead) */
+.sobre-lead {
+  margin: var(--space-1) 0 0 0;
+  color: #495057;
+  line-height: 1.6;
+}
+
+/* Grid da seção Sobre (texto + card lateral) */
+.sobre-grid {
+  display: grid; /* Usa CSS Grid para layout */
+
+  /* CALC EXPLICADO:
+     gap: calc(var(--space-3) * 0.75);
+     - var(--space-3) é nossa unidade base de espaçamento (16px).
+     - Multiplicamos por 0.75 para obter ~12px sem criar nova variável.
+     - Útil para “afinar” o layout mantendo relação com a escala.
+  */
+  gap: calc(var(--space-3) * 0.75);
+  margin-top: var(--space-3); /* Espaço superior do grid */
+}
+
+/* Em telas maiores, define duas colunas proporcionais */
+@media (min-width: 900px) {
+  .sobre-grid {
+    grid-template-columns: 1.2fr 0.8fr; /* Coluna de texto maior que a do card */
+    align-items: start; /* Alinha itens ao topo */
+  }
+}
+
+/* Evita quebra de layout em colunas estreitas */
+.sobre-col {
+  min-width: 0;
+}
+
+/* Lista de pilares (sem bullets visuais padrão) */
+.sobre-pilares {
+  /* CALC EXPLICADO:
+  margin: calc(var(--space-3) * 0.8) 0 0 0;
+     - Deriva do espaço base (16px * 0.8 = ~12.8px).
+     - Ajuste fino para separar a lista do conteúdo acima sem “pesar”.
+  */
+  margin: calc(var(--space-3) * 0.8) 0 0 0;
+  padding: 0; /* Remove padding padrão da lista */
+  list-style: none; /* Remove marcadores padrão */
+  display: grid; /* Exibe itens empilhados com gap */
+  gap: 10px; /* Espaço entre itens */
+}
+
+/* Cada item da lista com “ponto” customizado à esquerda */
+.sobre-pilares li {
+  position: relative; /* Permite posicionar o “ponto” com ::before */
+  padding-left: 28px; /* Espaço para o “ponto” */
+  line-height: 1.6; /* Altura de linha confortável */
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #ffffff 60%,
+    transparent 100%
+  ); /* Suave destaque à esquerda */
+}
+
+/* “Ponto” circular de cada item */
+.sobre-pilares li::before {
+  content: ""; /* Cria o elemento visual */
+  position: absolute; /* Posiciona em relação ao li */
+  left: 0;
+  top: 8px; /* Posição do ponto */
+  width: 12px;
+  height: 12px; /* Tamanho do ponto */
+  border-radius: 999px; /* Deixa circular */
+  background: var(--muted-2); /* Fundo azul clarinho */
+  border: 2px solid var(--primary); /* Borda na cor principal */
+}
+
+/* Cartão lateral da seção Sobre */
+.sobre-card {
+  background: var(--muted); /* Fundo do card */
+  border: 1px solid var(--border); /* Borda sutil */
+  border-radius: var(--radius); /* Bordas arredondadas */
+
+  /* CALC EXPLICADO:
+     padding: calc(var(--space-3) * 0.8);
+     - Começamos do espaçamento base (16px).
+     - Reduzimos em 20% para um card visualmente mais “enxuto” (~12.8px).
+     - Mantém a coerência com a escala sem criar outra variável.
+  */
+  padding: calc(var(--space-3) * 0.8);
+
+  box-shadow: var(--shadow-m); /* Sombra média para destaque */
+}
+
+/* Título do cartão lateral */
+.sobre-card__titulo {
+  margin: 0 0 10px 0; /* Espaço inferior do título */
+  font-size: var(--fs-3); /* Tamanho do título do card */
+  letter-spacing: 0.2px; /* Leve espaçamento entre letras */
+}
+
+/* Lista de definições do card (dl) */
+.sobre-oferta {
+  margin: 0;
+} /* Remove margens padrão */
+.sobre-oferta dt {
+  font-weight: 700;
+  margin-top: 8px;
+} /* Termos em negrito */
+.sobre-oferta dd {
+  margin: 4px 0 8px 0;
+  color: #495057;
+} /* Definições com cor suave */
+.sobre-cta {
+  margin-top: var(--space-3);
+} /* Espaço acima do CTA */
+
+/* Selo visual “Institucional” */
+.sobre-selo {
+  display: inline-block; /* Permite padding */
+  background: var(--muted-2); /* Fundo azul claro */
+  color: var(--primary); /* Texto na cor principal */
+  font-weight: 700; /* Negrito */
+  padding: 6px 10px; /* Espaçamento interno */
+  border-radius: var(--radius); /* Cápsula arredondada */
+  font-size: 0.85rem; /* Tamanho do texto do selo */
+  letter-spacing: 0.2px; /* Espaçamento entre letras */
+}
+
+/* =================== BLOCO 5: PROGRAMAS =================== */
+/* Seção Programas com espaçamento e centralização */
+.secao-programas {
+  padding: var(--space-6) var(--space-3); /* Espaço interno */
+  max-width: var(--max-width); /* Largura máxima */
+  margin: 0 auto; /* Centraliza */
+  text-align: left; /* Texto alinhado à esquerda */
+}
+
+/* Título da seção Programas */
+.secao-programas h3 {
+  margin: 0 0 var(--space-4) 0; /* Espaço inferior do título */
+  font-size: var(--fs-4); /* Tamanho do título */
+  text-align: center; /* Centraliza o título */
+}
+
+/* Container com grid fluido: cria 1 a N colunas conforme espaço disponível */
+.programas-container {
+  display: grid; /* Ativa CSS Grid */
+  gap: var(--space-4); /* Espaço entre cards */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(260px, 1fr)
+  ); /* Colunas flexíveis com largura mínima */
+}
+
+/* Card padrão dos Programas */
+.card-programa {
+  background-color: var(--muted); /* Fundo claro */
+  border: 1px solid var(--border); /* Borda sutil */
+  border-radius: var(--radius); /* Bordas arredondadas */
+  padding: var(--space-3); /* Espaço interno */
+  box-shadow: var(--shadow-s); /* Sombra leve */
+}
+
+/* Título do card */
+.card-programa h4 {
+  margin: 0 0 6px 0;
+  font-size: 1.2rem;
+} /* Margem e tamanho do título */
+
+/* Parágrafo do card */
+.card-programa p {
+  margin: 0;
+} /* Remove margens extras nos parágrafos */
+
+/* Destaque visual do card do meio (Incubação) */
+.card-programa.destaque {
+  border-left: 4px solid var(--primary);
+} /* Barra lateral colorida */
+
+/* =================== BLOCO 6: STARTUPS =================== */
+/* Seção Startups com espaçamento e centralização */
+.secao-startups {
+  padding: var(--space-6) var(--space-3); /* Espaço interno */
+  max-width: var(--max-width); /* Largura máxima */
+  margin: 0 auto; /* Centraliza */
+}
+
+/* Cabeçalho das seções de conteúdo */
+.conteudo-header {
+  /* CALC EXPLICADO:
+     margin-bottom: calc(var(--space-3) * 0.8);
+     - Distancia o cabeçalho (título/lead) dos itens seguintes com ~12.8px,
+       mantendo proporção com a escala de espaçamento.
+  */
+  margin-bottom: calc(var(--space-3) * 0.8);
+
+  text-align: center; /* Centraliza título e lead */
+}
+.conteudo-lead {
+  color: #495057;
+  margin: 0;
+} /* Texto de apoio com cor suave */
+
+/* Grid das startups */
+.startups-grid {
+  display: grid;
+  gap: calc(var(--space-3) * 0.8);
+} /* Gap ~12.8px entre cards */
+@media (min-width: 820px) {
+  .startups-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Card de cada startup */
+.startup-item {
+  display: grid; /* Layout em grid para avatar + conteúdo */
+  grid-template-columns: 64px 1fr; /* Coluna do avatar e coluna do texto */
+  gap: 12px; /* Espaço entre avatar e texto */
+  align-items: start; /* Alinha itens ao topo */
+  background: var(--muted); /* Fundo claro */
+  border: 1px solid var(--border); /* Borda sutil */
+  border-radius: var(--radius); /* Bordas arredondadas */
+
+  /* CALC EXPLICADO:
+     padding: calc(var(--space-3) * 0.7);
+     - Base de 16px reduzida em 30% (~11.2px) para o card ficar mais compacto
+       que outros cards, mantendo coerência visual.
+  */
+  padding: calc(var(--space-3) * 0.7);
+
+  box-shadow: var(--shadow-m); /* Sombra média */
+}
+
+/* Destaque lateral no primeiro item */
+.startup-item.destaque {
+  border-left: 4px solid var(--primary);
+}
+
+/* Avatar circular com iniciais */
+.startup-avatar {
+  width: 64px;
+  height: 64px; /* Tamanho do avatar */
+  border-radius: 50%; /* Forma circular */
+  display: grid;
+  place-items: center; /* Centraliza o texto no meio do círculo */
+  background: var(--muted-2); /* Fundo azul claro */
+  color: var(--primary); /* Texto na cor principal */
+  font-weight: 800; /* Negrito forte */
+  font-size: 1.1rem; /* Tamanho do texto */
+  user-select: none; /* Evita selecionar o texto do avatar */
+}
+
+/* Garante que o texto dentro do card não quebre layout */
+.startup-body {
+  min-width: 0;
+}
+
+/* Nome da startup (título do card) */
+.startup-nome {
+  margin: 0 0 4px 0;
+  font-size: var(--fs-3);
+  letter-spacing: 0.2px;
+} /* Estilo do título */
+
+/* Descrição curta (pitch) */
+.startup-pitch {
+  margin: 0;
+  color: #495057;
+} /* Texto de apoio com cor suave */
+
+/* =================== BLOCO 7: EVENTOS & AGENDA =================== */
+/* Seção Eventos com espaçamento e centralização */
+.secao-eventos {
+  padding: var(--space-6) var(--space-3); /* Espaço interno */
+  max-width: var(--max-width); /* Largura máxima */
+  margin: 0 auto; /* Centraliza */
+}
+
+/* Lista (timeline) com barra vertical */
+.timeline {
+  list-style: none; /* Remove numeração padrão */
+  margin: 0;
+  padding: 0; /* Remove margens/padding padrão */
+  position: relative; /* Permite posicionar a barra vertical com ::before */
+  display: grid; /* Organiza itens com gap */
+
+  /* CALC EXPLICADO:
+     gap: calc(var(--space-3) * 0.8);
+     - Espaçamento vertical entre itens de ~12.8px para combinar com
+       dimensões do badge e do card e manter ritmo visual.
+  */
+  gap: calc(var(--space-3) * 0.8);
+}
+
+/* Barra vertical da timeline */
+.timeline::before {
+  content: ""; /* Cria elemento visual */
+  position: absolute; /* Posiciona dentro da lista */
+  left: 32px;
+  top: 0;
+  bottom: 0; /* Ocupa toda a altura da lista */
+  width: 2px; /* Largura da barra */
+  background: #e5e7eb; /* Cor da barra (cinza claro) */
+}
+
+/* Cada item da timeline (badge + card) */
+.timeline-item {
+  position: relative; /* Para sobrepor aos poucos a barra, se necessário */
+  display: grid; /* Grid para badge e card */
+  grid-template-columns: 64px 1fr; /* Coluna do badge e coluna do card */
+  gap: 12px; /* Espaço entre badge e card */
+  align-items: start; /* Alinha ao topo */
+}
+
+/* Badge quadrado com a data */
+.timeline-badge {
+  position: relative;
+  z-index: 1; /* Fica acima da barra vertical */
+  width: 64px;
+  height: 64px; /* Tamanho do badge */
+  display: grid;
+  place-items: center; /* Centraliza o conteúdo */
+  background: var(--muted-2); /* Fundo azul claro */
+  color: var(--primary); /* Texto na cor principal */
+  border: 2px solid #cfe0ff; /* Borda com tom de azul */
+  border-radius: var(--radius-lg); /* Bordas arredondadas maiores */
+  font-weight: 800; /* Texto forte */
+  text-align: center; /* Centraliza linhas dentro do badge */
+  line-height: 1.1; /* Aproxima as linhas (dia e mês) */
+}
+
+/* Tamanho da fonte da data */
+.timeline-badge time {
+  font-size: 0.95rem;
+}
+
+/* Tamanho do mês (span) e leve espaçamento de letras */
+.timeline-badge time span {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.8px;
+}
+
+/* Card do evento (conteúdo à direita do badge) */
+.timeline-card {
+  background: var(--muted); /* Fundo do card */
+  border: 1px solid var(--border); /* Borda sutil */
+  border-radius: var(--radius); /* Bordas arredondadas */
+
+  /* CALC EXPLICADO:
+     padding: calc(var(--space-3) * 0.7);
+     - Reduz o “respiro” interno para ~11.2px, equilibrando com o tamanho do badge
+       e evitando que o card pareça pesado em telas menores.
+  */
+  padding: calc(var(--space-3) * 0.7);
+
+  box-shadow: var(--shadow-m); /* Sombra média */
+}
+
+/* Título do card do evento */
+.timeline-card h4 {
+  margin: 0 0 4px 0;
+  font-size: var(--fs-3);
+} /* Estilo do título */
+
+/* Parágrafo do card do evento */
+.timeline-card p {
+  margin: 0 0 6px 0;
+} /* Espaço inferior curto */
+
+/* Ajustes para telas pequenas (mobile) */
+@media (max-width: 520px) {
+  .timeline {
+    padding-left: 6px;
+  } /* Adapta espaço interno da lista */
+  .timeline::before {
+    left: 22px;
+  } /* Reposiciona a barra vertical */
+  .timeline-item {
+    grid-template-columns: 48px 1fr;
+  } /* Diminui a largura da coluna do badge */
+  .timeline-badge {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+  } /* Ajusta o tamanho do badge */
+}
+
+/* =================== BLOCO 8: CONTATO =================== */
+/* Seção de contato com fundo escuro */
+.secao-contato {
+  background-color: var(--dark); /* Fundo escuro */
+  color: var(--light); /* Texto claro para contraste */
+  padding: var(--space-6) var(--space-3); /* Espaçamento interno */
+  text-align: center; /* Centraliza texto e botão */
+  position: relative; /* Permite posicionar selo absoluto */
+}
+
+/* Selo “Fale Conosco” centralizado acima da seção */
+.selo-contato {
+  position: absolute; /* Sai do fluxo normal */
+  top: -15px; /* Sobe 15px acima do topo da seção */
+  left: 50%; /* Centraliza horizontalmente */
+  transform: translateX(-50%); /* Ajusta para centralização exata */
+  background-color: #ffc107; /* Fundo amarelo (chama atenção) */
+  color: var(--dark); /* Texto escuro para contraste */
+  padding: 6px 12px; /* Espaçamento interno do selo */
+  border-radius: 6px; /* Bordas arredondadas */
+  font-weight: 700; /* Negrito para destaque */
+}
+
+/* Título da seção de contato */
+.secao-contato h3 {
+  margin: 0 0 var(--space-1) 0;
+  font-size: var(--fs-4);
+} /* Estilo do título */
+
+/* Parágrafos da seção de contato */
+.secao-contato p {
+  margin: 0 0 var(--space-3) 0;
+} /* Espaço inferior entre parágrafos */
+
+/* Bloco address sem itálico (mais uniforme) */
+.bloco-contato {
+  font-style: normal;
+  margin-bottom: var(--space-3);
+} /* Ajuste de estilo e espaçamento */
+
+/* =================== BLOCO 9: RODAPÉ =================== */
+/* Rodapé simples com fundo escuro */
+.rodape-principal {
+  background-color: #222; /* Fundo quase preto */
+  color: #eee; /* Texto cinza claro */
+  text-align: center; /* Centraliza o texto */
+  padding: var(--space-3); /* Espaçamento interno */
+}
+
+/* =================== BLOCO 10: MEDIA QUERIES =================== */
+/* Ajustes para telas médias e grandes */
+@media (min-width: 768px) {
+  .logo-texto {
+    font-size: 1.5rem;
+  } /* Aumenta o logo em telas maiores */
+
+  .hero-container {
+    flex-direction: row; /* Coloca texto e imagem lado a lado */
+    align-items: center; /* Alinha verticalmente */
+  }
+
+  .hero-texto {
+    text-align: left;
+    order: 1;
+    flex-basis: 60%;
+  } /* Texto ocupa 60% no desktop */
+  .hero-imagem {
+    order: 2;
+    flex-basis: 40%;
+  } /* Imagem ocupa 40% no desktop */
+
+  .secao-sobre,
+  .secao-programas {
+    padding: calc(var(--space-6) + 16px) var(--space-3);
+  }
+
+  /* CALC EXPLICADO:
+     padding: calc(var(--space-6) + 16px) var(--space-3);
+     - Vertical: soma 48px (space-6) + 16px = 64px de padding,
+       dando mais “respiro” nas seções em telas maiores.
+     - Horizontal: mantém 16px (space-3).
+     - Padrão “var + px” é útil quando a escala não tem exatamente
+       o valor desejado e você não quer criar outra variável.
+  */
+}
+
+/* ===== Acessibilidade opcional ===== */
+/* Destaque de foco visível para quem navega por teclado */
+:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+}
+
+/* Respeita preferências do usuário que pede menos animações */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  } /* Desativa rolagem suave */
+  * {
+    transition: none !important;
+    animation: none !important;
+  } /* Remove transições/animações */
+}
+
+/* ===== (Opcional) Modo escuro automático conforme sistema ===== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --dark: #eaeaea; /* Texto claro em modo escuro */
+    --light: #111111; /* Fundo escuro principal */
+    --muted: #1a1a1a; /* Fundo suave escuro */
+    --border: #333333; /* Borda mais escura */
+  }
+  body {
+    color: var(--dark);
+    background: var(--light);
+  } /* Aplica novas cores base */
+  .rodape-principal {
+    background: #111;
+    color: #ddd;
+  } /* Ajusta rodapé no modo escuro */
+}
+
+/* ============== Boas práticas com calc() ============== */
+/*
+1) Sempre use espaços ao redor dos operadores: calc(100% - 16px), calc(var(--x) * 0.8).
+2) Misturar unidades é permitido (px, %, vh, rem…), mas a propriedade final precisa aceitar o resultado.
+3) Use fatores decimais simples (0.75, 0.8, 1.25) para manter relação com a escala de espaçamento.
+4) Ótimos casos de uso:
+   - Compensar elementos fixos (ex.: altura da viewport MENOS o header).
+   - Ajustes finos de espaçamento (multiplicar a escala base por um fator).
+   - Misturar proporções e valores fixos (ex.: % + px) quando o design pede.
+5) Prefira variáveis (var(--...)) dentro do calc() para manter consistência do tema e facilitar manutenção.
+*/
