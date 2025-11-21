@@ -1020,6 +1020,35 @@ section {
   text-align: center;
 }
 
+/* =================== BLOCO - FORM HELPERS =================== */
+/* Campo 'Nº de Integrantes' com largura proporcional à página (20% da viewport) */
+#total-integrantes {
+  width: 10vw; /* 20% da largura da viewport */
+  max-width: 100%;
+  min-width: 70px;
+  box-sizing: border-box;
+}
+
+/* Form-grupo específico para checkbox (checkbox antes do texto) */
+.form-grupo--checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Deixa o checkbox visualmente pequeno e alinhado */
+#termos-uso {
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  accent-color: var(--primary);
+}
+
+.form-grupo--checkbox label {
+  margin: 0;
+  font-size: var(--fs-2);
+}
+
 /* =================== BLOCO 10: RODAPÉ =================== */
 /* Rodapé simples com fundo escuro */
 .rodape-principal {
