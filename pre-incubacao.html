@@ -16,50 +16,9 @@
     <meta property="og:type" content="website" />
     <title>Núcleo Incubador Ifes de Alegre</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="icon" href="/favicon.ico" />
-
-    <style>
-      .form-contato{
-        max-width: 600px;
-        background-color: #fff;
-        margin: 2rem auto;
-        padding: 1.5rem;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        
-      }
-
-      .form-grupo{
-        display: flex;
-        flex-direction: column;
-      }
-
-      .form-contato label{
-        font-weight: 600;
-        margin-bottom: 0.25rem;
-      }
-
-      .form-contato input, 
-      .form-contato select,
-      .form-contato textarea{
-        font: inherit;
-        padding: 0.6rem;
-        border-radius: 3px;
-        border: 1px solid #698476;
-      }
-
-      .form-contato input, 
-      .form-contato select{
-        height: 3rem;
-      }
-
-      .botao-cta{
-        font-size: 1rem;
-        font-weight: 700;
-        cursor: pointer;
-      }
-      
-    </style>
+    <!-- Importa o arquivo de estilos principal -->
+    <link rel="icon" href="image/ico/ico.ico" />
+    <!-- Ícone (favicon) exibido na aba do navegador -->
   </head>
 
   <body>
@@ -67,58 +26,180 @@
 
     <header class="cabecalho-principal">
       <h1 class="logo-texto">
-        <a href="#inicio" class="logo-link">Núcleo Incubador</a>
+        <a href="index.html#inicio" class="logo-link">Núcleo Incubador de Empreendimentos</a>
       </h1>
 
       <nav class="navegacao-principal" aria-label="Navegação principal">
         <ul class="menu" role="list">
-          <li><a href="#inicio">Início</a></li>
-          <li><a href="#programas">Programas</a></li>
-          <li><a href="#startups">Startups</a></li>
-          <li><a href="#eventos">Eventos</a></li>
-          <li><a href="#sobre">Sobre</a></li>
-          <li><a href="#contato">Contato</a></li>
+          <li><a href="index.html#inicio">Início</a></li>
+          <li><a href="index.html#programas">Programas</a></li>
+          <li><a href="index.html#startups">Startups</a></li>
+          <li><a href="index.html#eventos">Eventos</a></li>
+          <li><a href="index.html#sobre">Sobre</a></li>
+          <li><a href="index.html#contato">Contato</a></li>
+          <li><a href="pre-incubacao.html">Inscrição</a></li>
         </ul>
       </nav>
     </header>
 
     <main id="inicio" class="conteudo-principal">
+      <header class="form-pre-imcubacao-cabecalho">
+        <h3 id="titulo-form-pre-imcubacao">
+          Formulário de Inscrição na Pré-Incubação
+        </h3>
+        <!-- Título da seção Formulário -->
+      </header>
 
       <form class="form-contato">
         <div class="form-grupo">
           <label for="nome">Nome Completo</label>
-          <input type="text" name="nome" id="nome" required aria-required="true" minlength="3" placeholder="Digete o seu nome">
+          <input
+            type="text"
+            name="nome"
+            id="nome"
+            required
+            aria-required="true"
+            minlength="3"
+            placeholder="Digete o seu nome"
+          />
         </div>
 
         <div class="form-grupo">
           <label for="email">E-mail</label>
-          <input type="email" name="email" id="email" placeholder="seuemail@exemplo.com" aria-required="true" required>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="seuemail@exemplo.com"
+            aria-required="true"
+            required
+          />
+        </div>
+
+        <!--Mudei a forma de formatar o valor do telefone, pois da forma que estava apenas \d2, o valor deveria ser informado literalmente era o 2,
+        passando o valor em \d{2} que dizer que com o regex, o valor aceito é de dois dígitos
+        poderia usar dessa forma também, para obrigar o usuário inserir o DDD entre parênteses ^\(\d{2}\)\s?\d{5}-\d{4}$ 
+        -->
+        <div class="form-grupo">
+          <label for="telefone-celular">Telefone/Celular</label>
+          <input
+            type="tel"
+            name="telefone-celular"
+            id="telefone-celular"
+            placeholder="(XX) XXXXX-XXXX"
+            pattern="^\(\d{2}\)\s?\d{5}-\d{4}$"
+            aria-required="true"
+            inputmode="tel"
+            maxlength="15"
+            title="Formato: (XX) XXXXX-XXXX"
+            required
+          />
         </div>
 
         <div class="form-grupo">
-          <label for="assunto">Assunto</label>
-          <select name="assunto" id="assunto" required aria-required="true">
-            <option value="" disabled selected>Selecione um tópico</option>
-            <option value="editais">Informações sobre editais</option>
-            <option value="mentorias">Mentorias e projetos</option>
-            <option value="outro">Outros assuntos</option>
+          <label for="data-nascimento">Data de Nascimento</label>
+          <input
+            type="date"
+            name="data-nascimento"
+            id="data-nascimento"
+            placeholder="DD/MM/AAAA"
+            pattern="^[0-9]{2}/[0-9]{2}/[0-9]{4}$"
+            aria-required="true"
+            inputmode="numeric"
+            maxlength="10"
+            title="Formato: DD/MM/AAAA"
+            class="date-mask"
+            required
+          />
+        </div>
+
+        <div class="form-grupo">
+          <label for="escolaridade">Nível de Escolaridade</label>
+          <select
+            name="escolaridade"
+            id="escolaridade"
+            required
+            aria-required="true"
+          >
+            <option value="" disabled selected>Selecione a Escolaridade</option>
+            <option value="fundamental-incompleto">
+              Ensino Fundamental Incompleto
+            </option>
+            <option value="fundamental-completo">
+              Ensino Fundamental Completo
+            </option>
+            <option value="medio-completo">Ensino Médio Completo</option>
+            <option value="graduacao--em-andamento">
+              Graduação em Andamento
+            </option>
+            <option value="graduado">Graduado</option>
+            <option value="pos-graduado">Pós-Graduado</option>
           </select>
         </div>
 
         <div class="form-grupo">
-          <label for="mensagem">Sua Mensagem</label>
-          <textarea name="mensagem" id="mesagem" rows="8" required aria-required="true" placeholder="Digite a sua mensagem aqui..."></textarea>
+          <label for="nome-projeto">Nome do Projeto/Ideia</label>
+          <input
+            type="text"
+            name="nome-projeto"
+            id="nome-projeto"
+            required
+            aria-required="true"
+            placeholder="Digite o Nome do Projeto/Ideia"
+          />
         </div>
 
         <div class="form-grupo">
-          <button type="submit" class="botao-cta">Enviar Mensagem</button>
+          <label for="descricao">Descrição do Projeto</label>
+          <textarea
+            name="descricao"
+            id="descricao"
+            rows="6"
+            required
+            aria-required="true"
+            minlength="50"
+            maxlength="500"
+            placeholder="Digite a descrição do projeto aqui..."
+          ></textarea>
+        </div>
+
+        <div class="form-grupo">
+          <label for="total-integrantes">Nº de Integrantes na Equipe</label>
+          <input
+            type="number"
+            name="total-integrantes"
+            id="total-integrantes"
+            required
+            aria-required="true"
+            min="1"
+            placeholder="Digite o número de integrantes"
+          />
+        </div>
+
+        <div class="form-grupo">
+          <label for="termos-uso">Termos de Uso</label>
+          <input
+            type="checkbox"
+            name="termos-uso"
+            id="termos-uso"
+            required
+            aria-required="true"
+            placeholder="Marque a caixa de aceite dos termos de uso"
+          />
+        </div>
+
+        <div class="form-grupo">
+          <button type="submit" class="botao-cta">Enviar Inscrição</button>
         </div>
       </form>
-     
     </main>
 
     <footer class="rodape-principal">
-      <small>© 2025 Instituto Federal do Espírito Santo - Campus de Alegre</small>
+      <small
+        >© 2025 Instituto Federal do Espírito Santo - Campus de Alegre</small
+      >
     </footer>
+    <script src="js/phone-mask.js" defer></script>
+    <script src="js/date-mask.js" defer></script>
   </body>
 </html>

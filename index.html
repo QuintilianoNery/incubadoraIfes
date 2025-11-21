@@ -32,26 +32,25 @@
 
     <link rel="stylesheet" href="css/style.css" />
     <!-- Importa o arquivo de estilos principal -->
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="image/ico/ico.ico" />
     <!-- Ícone (favicon) exibido na aba do navegador -->
   </head>
   <!-- Fim da seção de cabeçalho -->
 
   <script>
-  (function() {
-      const header = document.querySelector('.cabecalho-principal');
-      const btn = header.querySelector('.menu-toggle');
-      const menu = document.getElementById('menu');
+    (function () {
+      const header = document.querySelector(".cabecalho-principal");
+      const btn = header.querySelector(".menu-toggle");
+      const menu = document.getElementById("menu");
 
-      btn.addEventListener('click', () => {
-        const aberto = header.classList.toggle('nav-aberta');
-        btn.setAttribute('aria-expanded', aberto);  // acessibilidade
+      btn.addEventListener("click", () => {
+        const aberto = header.classList.toggle("nav-aberta");
+        btn.setAttribute("aria-expanded", aberto); // acessibilidade
         // Opcional: mover foco para o primeiro link quando abrir
-        if (aberto) menu.querySelector('a')?.focus();
+        if (aberto) menu.querySelector("a")?.focus();
       });
     })();
   </script>
-
 
   <body>
     <!-- Início do corpo do documento (conteúdo visível) -->
@@ -86,6 +85,8 @@
           <!-- Link para a seção Sobre -->
           <li><a href="#contato">Contato</a></li>
           <!-- Link para a seção Contato -->
+          <li><a href="pre-incubacao.html">Inscrição</a></li>
+          <!-- Link para a seção Inscrição -->
         </ul>
         <!-- Fim da lista de menu -->
       </nav>
